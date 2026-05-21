@@ -13,10 +13,10 @@ import (
 	"api/internal/router"
 )
 
-func Start(cfg *config.Config, h *handler.Handler) error {
+func Start(cfg *config.Config, userH *handler.UserHandler) error {
 	srv := &http.Server{
 		Addr:    cfg.HTTP.Port,
-		Handler: router.Setup(h),
+		Handler: router.Setup(userH),
 	}
 
 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)

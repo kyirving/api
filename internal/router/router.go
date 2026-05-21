@@ -6,8 +6,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Setup(h *handler.Handler) *gin.Engine {
+func Setup(userH *handler.UserHandler) *gin.Engine {
 	r := gin.Default()
-	r.GET("/ping", h.Ping)
+
+	api := r.Group("/api")
+	registerUserRoutes(api, userH)
+
 	return r
 }

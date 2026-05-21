@@ -5,7 +5,8 @@
       "Bash(go build *)",
       "Bash(go get *)",
       "mcp__mcp_server_mysql__mysql_query",
-      "Bash(mysql *)"
+      "Bash(mysql *)",
+      "Bash(wire ./cmd/...)"
     ]
   }
 }
