@@ -11,6 +11,11 @@ import (
 type Config struct {
 	MySQL MySQLConfig `mapstructure:"mysql"`
 	HTTP  HTTPConfig  `mapstructure:"http"`
+	JWT   JWTConfig   `mapstructure:"jwt"`
+}
+
+type JWTConfig struct {
+	Secret string `mapstructure:"secret"`
 }
 
 type MySQLConfig struct {
@@ -74,6 +79,9 @@ func (c *Config) validate() error {
 	}
 	if c.MySQL.Database == "" {
 		return errors.New("mysql.database is required")
+	}
+	if c.JWT.Secret == "" {
+		return errors.New("jwt.secret is required")
 	}
 	return nil
 }
